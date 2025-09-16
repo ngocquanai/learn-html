@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Linh Anh ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comfortaa', sans-serif; /* New, easy-to-read font for main text with great Vietnamese support */
+            background: #ffecf5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive; /* Creative font for title */
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 5px;
+        }
+        
+        /* New: Dancing Script for the intro text */
+        .intro-text {
+            font-family: 'Dancing Script', cursive; 
+            font-size: 1.5rem; /* Slightly larger for better readability in this font */
+            color: #555;
+            margin-bottom: 25px;
+        }
+        
+        .heart-tap-area {
+            position: relative;
+            padding: 15px 30px;
+            background-color: transparent;
+            color: #ff69b4;
+            border: 2px solid #ff69b4;
+            margin: 0 auto;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s;
+            z-index: 1;
+            font-size: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .heart-tap-area:active {
+            transform: translateY(2px) scale(1.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        .message-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            min-height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .message-box.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .message-box p {
+            font-size: 1.2rem;
+            color: #a34c83;
+            margin: 0;
+        }
+
+        .heart-burst-particle {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff69b4' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            animation: burstOut 1.5s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0; }
+        }
+
+        .heart-particle-bg {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatUp 4s ease-out forwards;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e25555' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hey, Linh Anh!</h1>
+        <p class="intro-text">Nhấn nút ở dưới nha. Anh có điều muốn nói ❤️ với em</p>
+
+        <div class="heart-tap-area" onmousedown="showNextMessage(event)">
+            <span id="button-text">Mở ra nào!</span>
+        </div>
+
+        <div id="message-box" class="message-box">
+            <p id="message-text">Tình yêu của anh dành cho em ngày càng lớn hơn với mỗi lần nhấn.</p>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "Hello Sếp, ngày hôm nay của sếp vui hongggg?.",
+            "Chỉ là anh muốn thấy em cười, nên tạo chút bất ngờ cho emmmm",
+            "Nếu thấy cái này thú vị, nhớ nhắn cho anh biết nhaaaa",
+            "Có thể trả công cho anh bằng một bức ảnh của em khhoonggg? ",
+            "Nói sao nhỉ, anh muốn nói một chút suy nghĩ của anh với em được không ❤️",
+            "Nếu đã đến đây rồi, nhớ xem hết nhaaa",
+            "Mình biết nhau cũng được một thời gian rồi đó, chuỗi toptop của chúng ta cũng lớn rùi đó chứ ^^",
+            "Thực sự là có nhiều thứ chẳng thể đoán được với anh, anh học toán nên là một người rất thích sự ngẫu nhiên",
+            "Gặp được em thật sự là tình cờ, nói sao nhỉ, thực sự là trước đó anh chưa từng nghĩ anh có cơ hội quen được một người con gái như em",
+            "Với anh thì em xuất hiện như là đúng người, đúng thời điểm, và đã thay đổi rất nhiều suy nghĩ trong anh",
+            "Anh bị ấn tượng bởi sự hài hước, nghịch ngợm một chút, và cả sự xinh của em nữa.", 
+            "Anh thích nói chuyện với em lắm, anh thích sự vui, hồn nhiên của em", 
+            "Em biết không, gần đây anh có một thói quen hay lắm, cũng chẳng hiểu sao buổi sáng anh hay bị tỉnh giấc từ rất sớm, lúc 5-6-7h gì đó",
+            "xong, anh phải ngủ thêm một giấc nữa mới đủ giấc rùi dậy đi làm :)))",
+            "Nhưng mà, anh hong thấy khó chịu vì bị như vậy, bởi vì nó giúp anh có một thói quen đó là...",
+            "Anh dậy sớm như thế để xem sáng hôm nay em nhắn gì cho anh nào ❤️ vì múi giờ của em nhanh hơn anh đó",
+            "Anh không biết diễn tả cảm giác đó như thế nào nữa, nhưng nó kiểu háo hức, mong chờ",
+            "Từ khi quen em, anh cảm thấy điều đó cũng đã thực sự thay đổi anh đó, theo chiều hướng tốt hơn",
+            "Anh đi làm, rùi về đi tập mỗi ngày, rùi đợi buổi tối để nhắn tin với em nhiều, anh có người để anh chờ đợi tin nhắn, và chờ đợi... ngày em về Việt Nam nữa",
+            "Thực sự thì... anh rất muốn được trở thành một người đặc biệt với em, nên là...",
+            "Em có thể cho chúng mình một cơ hội để trở thành ngoại lệ của nhau không ❤️ "
+        ];
+
+        let messageIndex = 0;
+        const lastMessage = "Em có thể cho chúng mình một cơ hội để trở thành ngoại lệ của nhau không ❤️"
+
+        function showNextMessage(event) {
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            const buttonText = document.getElementById('button-text');
+            
+            createFloatingHearts();
+
+            if (messageIndex >= messages.length) {
+                messageText.textContent = lastMessage;
+                createHeartBurst(event);
+                buttonText.textContent = "Đừng từ chối anh nha 😫"
+                return;
+            }
+            
+            messageBox.classList.remove('visible');
+            
+            messageText.textContent = messages[messageIndex];
+            
+            setTimeout(() => {
+                messageBox.classList.add('visible');
+            }, 300);
+
+            messageIndex++;
+        }
+        
+        function createHeartBurst(event) {
+            const numHearts = 15;
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-burst-particle');
+                
+                const clickX = event.clientX;
+                const clickY = event.clientY;
+
+                heart.style.left = `${clickX}px`;
+                heart.style.top = `${clickY}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50; 
+                const endX = distance * Math.cos(angle);
+                const endY = distance * Math.sin(angle);
+                
+                heart.style.setProperty('--x', `${endX}px`);
+                heart.style.setProperty('--y', `${endY}px`);
+
+                heart.style.animationDelay = `${Math.random() * 0.3}s`;
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 1500); 
+            }
+        }
+
+        function createFloatingHearts() {
+            const numHearts = 5;
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle-bg');
+                
+                const startX = Math.random() * window.innerWidth;
+                const startY = window.innerHeight + 20;
+                
+                const endX = startX + (Math.random() - 0.5) * 200;
+                const endY = -50;
+
+                heart.style.left = `${startX}px`;
+                heart.style.top = `${startY}px`;
+                heart.style.setProperty('--x', `${endX - startX}px`);
+                heart.style.setProperty('--y', `${endY - startY}px`);
+                
+                heart.style.animationDelay = `${Math.random() * 0.5}s`;
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000 + (Math.random() * 500)); 
+            }
+        }
+    </script>
+</body>
+</html>
